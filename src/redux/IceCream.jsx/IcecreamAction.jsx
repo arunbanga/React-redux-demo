@@ -1,8 +1,7 @@
-import {BUY_ICECREAM} from '../IceCream.jsx/IceCreamTypes'
-
+import {BUY_ICECREAM} from './IceCreamTypes'
 export const buyIceCream=()=>{
     return{
-        type:BUY_ICECREAM
+    type: BUY_ICECREAM
     }
 }
 

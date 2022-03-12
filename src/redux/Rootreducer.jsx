@@ -4,7 +4,7 @@ import IceCreamReducer from './IceCream.jsx/IceCreamReducer'
 
 const Rootreducer = combineReducers({
     cake:cakeReducer,
-    iceCream:IceCreamReducer
+    iceCream:IceCreamReducer,
 })
 
 export default Rootreducer;
