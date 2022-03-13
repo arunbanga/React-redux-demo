@@ -10,13 +10,13 @@ const IceCreamContainer = (props) => {
 };
 const mapStateToProps = state => {
   return {
-    numofIceCreams: state.iceCream.numofIceCreams
+    numofIceCreams:state.iceCream.numofIceCreams
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    buyIceCream:() => dispatch (buyIceCream())
+    buyIceCream:() => dispatch(buyIceCream())
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(IceCreamContainer);
+export default connect (mapStateToProps,mapDispatchToProps)(IceCreamContainer);
