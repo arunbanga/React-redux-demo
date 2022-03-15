@@ -5,9 +5,19 @@ import {fetchUsers} from '../redux/User/userAction'
 const Container=({ userData ,fetchUsers})=>{
     useEffect(()=>{
         fetchUsers()
+        
     },[])
-    const deleteuser=()=>{
-        alert('delete')
+    
+    const deleteuser=(id)=>{
+       fetch(`https://jsonplaceholder.typicode.com/posts/1 ${id}`,{
+           method:'DELETE',
+       }).then((result)=>{
+           result.json().then((resp)=>{
+               console.warn(resp)
+               
+           })
+       })
+    
     }
     return userData.loading ?(
         <h2>Loading</h2>
@@ -22,8 +32,10 @@ const Container=({ userData ,fetchUsers})=>{
                {
                 userData && userData.users && userData.users.map(users =>
                 <tr>
+                 <td>{users.id}</td>
                  <td>{users.name}</td>
-                 <td><button onClick={()=>deleteuser(users.name)}>Delete</button></td>
+                 
+                 <td><button onClick={()=>deleteuser(users.id)}>Delete</button></td>
                  </tr>
                 )}
                 
