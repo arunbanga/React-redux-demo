@@ -6,6 +6,9 @@ const Container=({ userData ,fetchUsers})=>{
     useEffect(()=>{
         fetchUsers()
     },[])
+    const deleteuser=()=>{
+        alert('delete')
+    }
     return userData.loading ?(
         <h2>Loading</h2>
     ) : userData.error ?(
@@ -13,12 +16,22 @@ const Container=({ userData ,fetchUsers})=>{
     ) : (
         <div>
             <h2>user list</h2>
+            
             <div>
-                {
-                    userData && userData.users && userData.users.map(users => <p>{users.name}</p>)
-                }
-            </div>
+            
+               {
+                userData && userData.users && userData.users.map(users =>
+                <tr>
+                 <td>{users.name}</td>
+                 <td><button onClick={()=>deleteuser(users.name)}>Delete</button></td>
+                 </tr>
+                )}
+                
+                
+         </div>
+              
         </div>
+                
     )
 }
 const mapStateToProps = state =>{

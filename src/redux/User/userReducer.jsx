@@ -13,6 +13,7 @@ const useReducer =(state=intialState,action)=>{
                 ...state,
                 loading:true
             }
+           
         case FETCH_USERS_SUCCESS:
             return{
                 loading:false,

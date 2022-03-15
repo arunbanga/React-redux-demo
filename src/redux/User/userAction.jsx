@@ -26,7 +26,9 @@ export const fetchUsers=()=>{
      .then(response=>{
          const users=response.data
          dispatch(fetchUsersSuccess(users))
+        
      })
+    
      .catch(error=>{
          const errorMsg =error.message
          dispatch(fetchUsersFailure(errorMsg))
