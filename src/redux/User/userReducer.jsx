@@ -28,10 +28,11 @@ const useReducer =(state=intialState,action)=>{
              }  
              
             case DELETE_USERS:
-             const newlist= state.users.filter((elem=> elem.name===action.name))
+             
              return{
                  ...state,
-                 users:newlist,
+                 id:action.payload,
+                
               
                  
             }
