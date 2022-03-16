@@ -1,24 +1,16 @@
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
-import {fetchUsers} from '../redux/User/userAction'
+import {fetchUsers,deleteUsers} from '../redux/User/userAction'
 
+import {useDispatch} from 'react-redux'
 const Container=({ userData ,fetchUsers})=>{
+    const dispatch=useDispatch();
     useEffect(()=>{
         fetchUsers()
         
     },[])
     
-    const deleteuser=(id)=>{
-       fetch(`https://jsonplaceholder.typicode.com/posts/1 ${id}`,{
-           method:'DELETE',
-       }).then((result)=>{
-           result.json().then((resp)=>{
-               console.warn(resp)
-               
-           })
-       })
     
-    }
     return userData.loading ?(
         <h2>Loading</h2>
     ) : userData.error ?(
@@ -35,7 +27,7 @@ const Container=({ userData ,fetchUsers})=>{
                  <td>{users.id}</td>
                  <td>{users.name}</td>
                  
-                 <td><button onClick={()=>deleteuser(users.id)}>Delete</button></td>
+                 <td><button onClick={()=>dispatch(deleteUsers(users.name))}>Delete</button></td>
                  </tr>
                 )}
                 

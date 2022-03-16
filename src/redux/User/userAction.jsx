@@ -1,4 +1,4 @@
-import { FETCH_USERS_REQUEST ,FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./userTypes";
+import { FETCH_USERS_REQUEST ,FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE,DELETE_USERS} from "./userTypes";
 import axios from 'axios'
 export const fetchUsersRequest=()=>{
     return{
@@ -19,6 +19,8 @@ const fetchUsersFailure = error=>{
         payload:error
     }
 }
+ 
+
 export const fetchUsers=()=>{
     return(dispatch)=>{
         dispatch(fetchUsersRequest)
@@ -33,5 +35,11 @@ export const fetchUsers=()=>{
          const errorMsg =error.message
          dispatch(fetchUsersFailure(errorMsg))
      })
+    }
+}
+export const deleteUsers=name=>{
+    return{
+        type:DELETE_USERS,
+        payload:name
     }
 }

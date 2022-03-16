@@ -1,4 +1,4 @@
-import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from "./userTypes";
+import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE ,DELETE_USERS} from "./userTypes";
 
 const intialState = {
     loading: false,
@@ -25,8 +25,22 @@ const useReducer =(state=intialState,action)=>{
                  loading:false,
                  users:[],
                  error:action.payload
-             }   
+             }  
+             
+            case DELETE_USERS:
+             const newlist= state.users.filter((elem=> elem.name===action.name))
+             return{
+                 ...state,
+                 users:newlist,
+              
+                 
+            }
+            
             default : return state
     }
+    
 }
+
+
+   
 export default useReducer
