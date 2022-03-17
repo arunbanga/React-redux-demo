@@ -28,14 +28,17 @@ const useReducer =(state=intialState,action)=>{
              }  
              
             case DELETE_USERS:
-             
-             return{
-                 ...state,
-                 id:action.payload,
-                
-              
-                 
-            }
+                const _users = [...state.users]
+             const userIndex = _users.findIndex(user => user.name === action.payload)
+             if(userIndex !== -1){
+                 _users.splice(userIndex,1)
+                 return{
+                    ...state,
+                users: _users,
+               }
+             }
+             return state
+
             
             default : return state
     }
